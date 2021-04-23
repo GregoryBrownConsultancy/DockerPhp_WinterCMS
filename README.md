@@ -1,6 +1,6 @@
 # PHP DOCKER SETUP
 
-Simple PHP development environment for quick start projects.
+Simple PHP development environment for quick start projects. Using Nginx, PHP-fpm7.4 and MariaDB
 
 ## To use
 
@@ -15,6 +15,15 @@ cd my_project_name
 This will setup a basic PHP & MariaDB system running under your 127.0.0.1
 
 All your source-code should be placed in the folder `app/code`
+
+> You'll need to create the `app/code` folder. That is the root directory of your application in NGINX.
+
+## SCRIPTS I HAVE INCLUDED TO MAKE LIFE EASY
+
+- **setup** - Clears git folder, builds docker images
+- **shell** - Simple shortcut for `docker compose exec....`
+- **wintercms** - Clears app directory, installs and setups wintercms
+
 
 ## WINTER CMS
 
@@ -38,3 +47,5 @@ When you run the wintecms command, it will install a fully functional WinterCMS 
 - **RainLab/Pages** - Static Pages Plugin
 - **RainLab/DebugBar** - The ever so useful Debug Bar 
  
+## What is in the pipeline?
+While this does attend most of my current project needs, I might add to it some configuration options, allowing you to choos what kind of install you want to run with and so forth. For the time being, I am keep it simple and clutter free.
