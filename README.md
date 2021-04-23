@@ -23,6 +23,7 @@ All your source-code should be placed in the folder `app/code`
 - **setup** - Clears git folder, builds docker images
 - **shell** - Simple shortcut for `docker compose exec....`
 - **wintercms** - Clears app directory, installs and setups wintercms
+- **wintercms-full** - Clears app directory, installs and setups wintercms, then installs my suite of usual plugins
 
 
 ## WINTER CMS
@@ -35,6 +36,18 @@ Since I am an avid WinterCMS user, I created a simple script that can be run aft
 This will run through all the basic install commands for you.
 
 > Do keep an eye open becuase it will ask you things every now and then
+
+### What is included with this winter script
+
+When you run the wintecms command, it will install a fully functional WinterCMS application for you.
+
+## WinterCMS-full
+Since I usually use a number of standard plugins, I decided to make my life easier by already pre-installing them.
+> At the time of this release, since Winter still does not have a functioning marketplace, I am installing the plugins by cloning their repos rather than installing them via `plugin:install`
+
+```bash
+./wintercms-full
+```
 
 ### What is included with this winter script
 
