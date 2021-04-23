@@ -1,23 +1,20 @@
 #!/bin/bash
-composer create-project wintercms/winter /app/code "dev-develop"
+composer create-project -n wintercms/winter /app/code "dev-develop"
 
 cd /app/code
-# CLONE BUILDER PLUGIN
-git clone https://github.com/rainlab/builder-plugin /app/code/plugins/rainlab/builder
-
-# CLONE USER PLUGIN
-git clone https://github.com/rainlab/user-plugin /app/code/plugins/rainlab/user
-
-# CLONE TRANSLATE PLUGIN
-git clone https://github.com/rainlab/translate-plugin /app/code/plugins/rainlab/translate
-
-# CLONE pages PLUGIN
-git clone https://github.com/rainlab/pages-plugin /app/code/plugins/rainlab/pages
-
+# ADD USER PLUGIN
+composer require winter/wn-user-plugin dev-main
+# ADD TRANSLATE PLUGIN
+composer require winter/wn-translate-plugin dev-main
+# ADD BUILDER PLUGIN
+composer require winter/wn-builder-plugin dev-main
+# ADD pages PLUGIN
+composer require winter/wn-pages-plugin dev-main
 # ADD DEBUG-BAR
-cd /app/code
 composer require rainlab/debugbar-plugin
+
 php artisan winter:env
 cp /scripts/sample.env /app/code/.env
 php artisan winter:up 
+echo 'Change user:password to admin:admin'
 php artisan winter:passwd admin admin
