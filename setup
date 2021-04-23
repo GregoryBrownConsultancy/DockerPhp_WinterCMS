@@ -1,6 +1,7 @@
 #!/bin/bash
-echo 'CLEAR GIT FOLDER'
+echo 'CLEAR GIT FOLDER & Stuff from this repo'
 rm -Rf .git
+rm -f .gitignore
 echo 'WHILE THIS IS RUNNING, CHECKOUT THE README'
 echo 'RUN DOCKER BUILD'
 docker compose build
