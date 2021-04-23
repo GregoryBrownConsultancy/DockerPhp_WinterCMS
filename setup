@@ -1,0 +1,8 @@
+#!/bin/bash
+echo 'CLEAR GIT FOLDER'
+rm -Rf .git
+echo 'WHILE THIS IS RUNNING, CHECKOUT THE README'
+echo 'RUN DOCKER BUILD'
+docker compose build
+echo 'Remove execute permissions from setup to avoid disasters'
+chmod -x setup

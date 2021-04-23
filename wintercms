@@ -1,0 +1,17 @@
+#!/bin/bash
+echo This will clear out the app directory
+echo ALL DATA WILL BE LOST
+echo 
+echo 'Are you sure? [yes/no]'
+read eraseall
+
+if [ $eraseall == 'yes' ]; 
+    then echo 'ERASE IT ALL';
+    rm -Rf app
+    echo 'INSTALL WCMS AND USEFUL PLUGINS'
+    mkdir app
+    docker compose exec php /bin/bash -c 'cd /scripts&&chmod +x wintercms&&/scripts/wintercms'
+fi;
+echo ;
+exit 0
+

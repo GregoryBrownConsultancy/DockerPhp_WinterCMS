@@ -1,0 +1,23 @@
+#!/bin/bash
+composer create-project wintercms/winter /app/code "dev-develop"
+
+cd /app/code
+# CLONE BUILDER PLUGIN
+git clone https://github.com/rainlab/builder-plugin /app/code/plugins/rainlab/builder
+
+# CLONE USER PLUGIN
+git clone https://github.com/rainlab/user-plugin /app/code/plugins/rainlab/user
+
+# CLONE TRANSLATE PLUGIN
+git clone https://github.com/rainlab/translate-plugin /app/code/plugins/rainlab/translate
+
+# CLONE pages PLUGIN
+git clone https://github.com/rainlab/pages-plugin /app/code/plugins/rainlab/pages
+
+# ADD DEBUG-BAR
+cd /app/code
+composer require rainlab/debugbar-plugin
+php artisan winter:env
+cp /scripts/sample.env /app/code/.env
+php artisan winter:up 
+php artisan winter:passwd admin admin
