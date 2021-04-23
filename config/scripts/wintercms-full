@@ -11,7 +11,7 @@ composer require winter/wn-builder-plugin dev-main
 # ADD pages PLUGIN
 composer require winter/wn-pages-plugin dev-main
 # ADD DEBUG-BAR
-composer require rainlab/debugbar-plugin
+composer require winter/wn-debugbar-plugin
 
 php artisan winter:env
 cp /scripts/sample.env /app/code/.env

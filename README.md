@@ -54,11 +54,11 @@ Since I usually use a number of standard plugins, I decided to make my life easi
 When you run the wintecms command, it will install a fully functional WinterCMS application for you. It comes by default with an assortment of my usual plugins.
 
 - **Latest WinterCMS**
-- **RainLab/Builder** - The famous builde plugin
-- **RainLab/User** - Client side Users 
-- **RainLab/Translate** - Enable Multi-language sites
-- **RainLab/Pages** - Static Pages Plugin
-- **RainLab/DebugBar** - The ever so useful Debug Bar 
+- **wn-builder-plugin** - The famous builder plugin
+- **wn-user-plugin** - Client side Users 
+- **wn-translate-plugin** - Enable Multi-language sites
+- **wn-pages-plugin** - Static Pages Plugin
+- **wn-debugBar-plugin** - The ever so useful Debug Bar 
  
 ## What is in the pipeline?
 While this does attend most of my current project needs, I might add to it some configuration options, allowing you to choos what kind of install you want to run with and so forth. For the time being, I am keep it simple and clutter free.
