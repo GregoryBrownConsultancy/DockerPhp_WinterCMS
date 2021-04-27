@@ -2,8 +2,27 @@
 echo 'CLEAR GIT FOLDER & Stuff from this repo'
 rm -Rf .git
 rm -f .gitignore
+
+echo 'Doing some routine stuff to setup the folder'
+DIR="./app"
+if [ -d "$DIR" ]; then
+  echo "'app' directory already exists"
+else
+  echo "Creating 'app' dir"
+  mkdir app
+fi
+
+DIR="./mysqldata"
+if [ -d "$DIR" ]; then
+  echo "'mysqldata' directory already exists"
+else
+  echo "Creating 'mysqldata' dir"
+  mkdir mysqldata
+fi
+
 echo 'WHILE THIS IS RUNNING, CHECKOUT THE README'
 echo 'RUN DOCKER BUILD'
 docker compose build
+
 echo 'Remove execute permissions from setup to avoid disasters'
 chmod -x setup
