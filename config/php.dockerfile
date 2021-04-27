@@ -34,4 +34,3 @@ RUN apk update && apk add --no-cache vim g++ make zlib-dev \
         && rm -rf /var/cache/apk/*
 RUN pecl install redis \
     &&  docker-php-ext-enable redis
-RUN cd /app
