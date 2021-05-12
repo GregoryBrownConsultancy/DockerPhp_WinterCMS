@@ -1,5 +1,5 @@
 #!/bin/bash
-composer create-project -n wintercms/winter /app/code "dev-develop"
+composer create-project -n wintercms/winter /app/code
 
 cd /app/code
 # ADD USER PLUGIN
@@ -19,6 +19,6 @@ php artisan winter:up
 echo 'Change user:password to admin:admin'
 php artisan winter:passwd admin admin
 echo "Remove all git related stuff"
-( find . -type d -name ".git" && find . -name ".gitignore" && find . -name ".gitmodules" ) | xargs rm -rf
+( find . -type d -name ".git" && find . -name ".gitmodules" ) | xargs rm -rf
 echo "Initialize git repo"
 git init
