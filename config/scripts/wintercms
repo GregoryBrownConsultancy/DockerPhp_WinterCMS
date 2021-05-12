@@ -1,5 +1,5 @@
 #!/bin/bash
-composer create-project wintercms/winter /app/code "dev-develop"
+composer create-project wintercms/winter /app/code
 
 cd /app/code
 php artisan winter:env
