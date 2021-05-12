@@ -7,6 +7,6 @@ cp /scripts/sample.env /app/code/.env
 php artisan winter:up 
 php artisan winter:passwd admin admin
 echo "Remove all git related stuff"
-( find . -type d -name ".git" && find . -name ".gitignore" && find . -name ".gitmodules" ) | xargs rm -rf
+( find . -type d -name ".git" && find . -name ".gitmodules" ) | xargs rm -rf
 echo "Initialize git repo"
 git init
