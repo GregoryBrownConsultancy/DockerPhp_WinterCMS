@@ -18,7 +18,5 @@ cp /scripts/sample.env /app/code/.env
 php artisan winter:up 
 echo 'Change user:password to admin:admin'
 php artisan winter:passwd admin admin
-echo "Remove all git related stuff"
-( find . -type d -name ".git" && find . -name ".gitmodules" ) | xargs rm -rf
 echo "Initialize git repo"
 git init
