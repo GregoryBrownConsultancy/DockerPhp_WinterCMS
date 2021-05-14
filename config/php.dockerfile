@@ -11,6 +11,7 @@ RUN apk add --no-cache --virtual .php-build-deps \
         libxml2-dev  \
         libzip-dev \
         libcurl \
+        jpeg-dev \
         libpng-dev \
         autoconf \
         libtool \
@@ -19,7 +20,11 @@ RUN apk add --no-cache --virtual .php-build-deps \
 
 RUN NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1)
 ## Installable modules
-RUN docker-php-ext-install iconv bcmath pdo_mysql opcache pgsql pdo_pgsql soap pcntl exif zip gd calendar dom json
+RUN docker-php-ext-install iconv bcmath pdo_mysql opcache pgsql pdo_pgsql soap pcntl exif zip calendar dom json
+# INSTALL GD LIBRARY
+RUN apk add libjpeg jpeg-dev && docker-php-ext-configure gd --with-jpeg --with-freetype \
+    && docker-php-ext-install -j$(nproc) gd
+
 ## just good to have installed
 RUN apk add --no-cache  ca-certificates wget
 
