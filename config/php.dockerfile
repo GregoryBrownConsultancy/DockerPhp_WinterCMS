@@ -1,41 +1,56 @@
-FROM php:7.4-fpm-alpine
+FROM php:8.2.0-fpm
 
-ENV BUILD_DEPS autoconf file gcc libc-dev make g++ pkgconf re2c git
+# Set working directory
+WORKDIR /app
 
-RUN apk add --update --no-cache --virtual .build-deps $BUILD_DEPS
-RUN apk add --no-cache --virtual .php-build-deps \
-        libsodium \
-        freetype-dev \
-        libmcrypt-dev \
-        postgresql-dev  \
-        libxml2-dev  \
-        libzip-dev \
-        libcurl \
-        jpeg-dev \
-        libpng-dev \
-        autoconf \
-        libtool \
-        nasm \
-        zlib-dev cyrus-sasl-dev libmemcached-dev
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpng-dev \
+    libonig-dev libzip-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    locales \
+    zip \
+    jpegoptim optipng pngquant gifsicle \
+    vim \
+    unzip \
+    git \
+    curl
 
-RUN NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1)
-## Installable modules
-RUN docker-php-ext-install iconv bcmath pdo_mysql opcache pgsql pdo_pgsql soap pcntl exif zip calendar dom json
-# INSTALL GD LIBRARY
-RUN apk add libjpeg jpeg-dev && docker-php-ext-configure gd --with-jpeg --with-freetype \
-    && docker-php-ext-install -j$(nproc) gd
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-## just good to have installed
-RUN apk add --no-cache  ca-certificates wget
+# Install extensions
+RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
+RUN docker-php-ext-install gd pdo_mysql mbstring zip exif pcntl
 
-RUN  cd ~ \
-    && curl -sS https://getcomposer.org/installer | php \
-    && mv composer.phar /usr/local/bin/composer
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-## Install dependencies like editor xdebug etc.
-RUN apk update && apk add --no-cache vim g++ make zlib-dev \
-        $BUILD_DEPS \
-        && pecl install xdebug && docker-php-ext-enable xdebug \
-        && rm -rf /var/cache/apk/*
-RUN pecl install redis \
-    &&  docker-php-ext-enable redis
+# Add user for laravel application
+RUN groupadd -g 1000 www
+RUN useradd -u 1000 -ms /bin/bash -g www www
+
+# # Copy existing application directory contents
+# COPY . /var/www
+
+# Copy existing application directory permissions
+# COPY --chown=www:www . /var/www
+
+# # Change current user to www
+USER www
+
+# Install Node and stuuf
+ENV NVM_DIR /home/www/.nvm
+ENV NODE_VERSION 18.13.0
+
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash \
+    && . $NVM_DIR/nvm.sh \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default
+
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
+

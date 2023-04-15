@@ -1,13 +1,13 @@
 # PHP DOCKER SETUP
 
-Simple PHP development environment for quick start projects. Using Nginx, PHP-fpm7.4 and MariaDB
+Simple PHP development environment for quick start projects. Using Nginx, PHP-fpm8.2 and MariaDB
 
 ## To use
 
 Clone this repo to where you want the project to be and setup it up
 
 ```bash
-git clone repo my_project_name
+git clone https://github.com/GregoryBrownConsultancy/DockerPhp_WinterCMS.git my_project_name
 cd my_project_name
 ./setup
 ```

@@ -3,15 +3,15 @@ composer create-project -n wintercms/winter /app/code
 
 cd /app/code
 # ADD USER PLUGIN
-composer require winter/wn-user-plugin dev-main
+composer require winter/wn-user-plugin
 # ADD TRANSLATE PLUGIN
-composer require winter/wn-translate-plugin dev-main
+# composer require winter/wn-translate-plugin dev-main
 # ADD BUILDER PLUGIN
-composer require winter/wn-builder-plugin dev-main
+composer require --dev winter/wn-builder-plugin
 # ADD pages PLUGIN
-composer require winter/wn-pages-plugin dev-main
+# composer require winter/wn-pages-plugin dev-main
 # ADD DEBUG-BAR
-composer require winter/wn-debugbar-plugin
+# composer require winter/wn-debugbar-plugin
 
 php artisan winter:env
 cp /scripts/sample.env /app/code/.env
