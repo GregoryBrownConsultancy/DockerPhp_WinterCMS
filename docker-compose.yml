@@ -1,12 +1,22 @@
 version: '3'
 services:
     web:
-        image: nginx:latest
+        build:
+            context: .
+            dockerfile: ./config/apache.dockerfile
         ports:
             - "80:80"
         volumes:
-            - ./config/nginx.conf:/etc/nginx/conf.d/nginx.conf
             - ./app:/app
+    # NGINX CONFIGURATION
+    #
+    # web:
+    #     image: nginx:latest
+    #     ports:
+    #         - "80:80"
+    #     volumes:
+    #         - ./config/nginx.conf:/etc/nginx/conf.d/nginx.conf
+    #         - ./app:/app
     php:
         build:
             context: .
