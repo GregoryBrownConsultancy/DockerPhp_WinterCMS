@@ -26,6 +26,11 @@ All your source-code should be placed in the folder `app/code`
 - **wintercms-full** - Clears app directory, installs and setups wintercms, then installs my suite of usual plugins
 
 
+## APACHE VS NGINX
+
+Some of my clients require Apache - so I made a small change in my DockerFile to make it availbe
+
+
 ## WINTER CMS
 
 Since I am an avid WinterCMS user, I created a simple script that can be run after you have setup the application.
