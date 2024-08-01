@@ -11,6 +11,8 @@ services:
         build:
             context: .
             dockerfile: ./config/php.dockerfile
+            args:
+                WORDPRESS: $WORDPRESS
         volumes:
             - ./app:/app
             - ./config/scripts:/scripts

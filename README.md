@@ -1,6 +1,6 @@
 # PHP DOCKER SETUP
 
-Simple PHP development environment for quick start projects. Using Nginx, PHP-fpm8.2 and MariaDB
+Simple PHP development environment for quick start projects. Using Nginx, PHP-fpm8.3 and MariaDB
 
 ## To use
 
@@ -25,6 +25,15 @@ All your source-code should be placed in the folder `app/code`
 - **wintercms** - Clears app directory, installs and setups wintercms
 - **wintercms-full** - Clears app directory, installs and setups wintercms, then installs my suite of usual plugins
 
+## WORDPRESS
+
+I've now included a simple flag that can be passed to docker composer that will alternatively install `wp-cli` in your PHP container. This is particularly useful if you are running a wordpress.
+
+To use this, all you need is to run docker compose with a variable:
+
+```bash
+WORDPRESS=true docker compose build
+```
 
 ## WINTER CMS
 
@@ -55,10 +64,10 @@ When you run the wintecms command, it will install a fully functional WinterCMS 
 
 - **Latest WinterCMS**
 - **wn-builder-plugin** - The famous builder plugin
-- **wn-user-plugin** - Client side Users 
+- **wn-user-plugin** - Client side Users
 - **wn-translate-plugin** - Enable Multi-language sites
 - **wn-pages-plugin** - Static Pages Plugin
-- **wn-debugBar-plugin** - The ever so useful Debug Bar 
- 
+- **wn-debugBar-plugin** - The ever so useful Debug Bar
+
 ## What is in the pipeline?
 While this does attend most of my current project needs, I might add to it some configuration options, allowing you to choos what kind of install you want to run with and so forth. For the time being, I am keep it simple and clutter free.

@@ -37,15 +37,22 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory permissions
 # COPY --chown=www:www . /var/www
+ARG WORDPRESS
+
+RUN if [ "$WORDPRESS" = "true" ]; then \
+    curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli-*.phar ; \
+    mv wp-cli-*.phar /usr/local/bin/wp ; \
+    chmod +x /usr/local/bin/wp ; \
+    fi
 
 # # Change current user to www
 USER www
 
 # Install Node and stuuf
 ENV NVM_DIR /home/www/.nvm
-ENV NODE_VERSION 18.13.0
+ENV NODE_VERSION 20.16.0
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash \
     && . $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
@@ -53,4 +60,5 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | b
 
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
+
 
