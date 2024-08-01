@@ -40,9 +40,7 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 ARG WORDPRESS
 
 RUN if [ "$WORDPRESS" = "true" ]; then \
-    curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli-*.phar ; \
-    mv wp-cli-*.phar /usr/local/bin/wp ; \
-    chmod +x /usr/local/bin/wp ; \
+        composer global require wp-cli/wp-cli-bundle ; \
     fi
 
 # # Change current user to www
@@ -59,6 +57,4 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | b
     && nvm use default
 
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
-
-
+ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:/home/www/.composer/vendor/bin:$PATH
