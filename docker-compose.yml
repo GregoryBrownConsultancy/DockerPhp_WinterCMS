@@ -12,7 +12,7 @@ services:
             context: .
             dockerfile: ./config/php.dockerfile
             args:
-                WORDPRESS: $WORDPRESS
+                WORDPRESS: ${WORDPRESS:-false}
         volumes:
             - ./app:/app
             - ./config/scripts:/scripts
