@@ -21,8 +21,8 @@ else
 fi
 
 echo 'WHILE THIS IS RUNNING, CHECKOUT THE README'
-echo 'RUN DOCKER BUILD'
-docker compose build
+echo 'BUILD AND START DOCKER COMPOSE'
+docker compose up -d --build
 
 echo 'Remove execute permissions from setup to avoid disasters'
 chmod -x setup
