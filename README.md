@@ -9,7 +9,7 @@ Clone this repo to where you want the project to be and setup it up
 Since you will probably not be updating this after you´ve installed it (at least not downloading it over and over again for the same project), I would recommend installing it by using `degit`
 
 ```bash
-degit https://github.com/GregoryBrownConsultancy/DockerPhp_WinterCMS.git my_project_name
+npx degit https://github.com/GregoryBrownConsultancy/DockerPhp_WinterCMS.git my_project_name
 ```
 This ensures your have a clean folder without any link to this repo and you can start fresh.
 
