@@ -10,6 +10,7 @@ if [ $eraseall == 'yes' ];
     rm -Rf app
     echo 'INSTALL WCMS AND USEFUL PLUGINS'
     mkdir app
+    docker compose restart
     docker compose exec php /bin/bash -c 'cd /scripts&&chmod +x wintercms&&/scripts/wintercms'
 fi;
 echo ;
