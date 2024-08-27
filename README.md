@@ -52,12 +52,14 @@ This project is meant to be run in a *nix environment. So if you are on Windows,
 
 - A specific service won't start usually means there is port a conflict(in most of the cases) - make sure you don't have local versions of mysql, apache/nginx running on your machine.
 
-
+## USING THE DOCKER IMAGE
 
 All your source-code should be placed in the folder `app/code`
 
-> You'll need to create the `app/code` folder. That is the root directory of your application in NGINX.
+> You'll need to create the `app/code` folder if you did not run the **winter**/**winter-full** scripts.
+> That is the root directory of your application in NGINX.
 
+The folder `app/code` is a live folder so any changes you make to it will reflect instantly on the server.
 
 ## SCRIPTS I HAVE INCLUDED TO MAKE LIFE EASY
 
@@ -93,7 +95,6 @@ When you run the wintecms command, it will install a fully functional WinterCMS 
 
 ## WinterCMS-full
 Since I usually use a number of standard plugins, I decided to make my life easier by already pre-installing them.
-> At the time of this release, since Winter still does not have a functioning marketplace, I am installing the plugins by cloning their repos rather than installing them via `plugin:install`
 
 ```bash
 ./wintercms-full
@@ -106,9 +107,6 @@ When you run the wintecms command, it will install a fully functional WinterCMS 
 - **Latest WinterCMS**
 - **wn-builder-plugin** - The famous builder plugin
 - **wn-user-plugin** - Client side Users
-- **wn-translate-plugin** - Enable Multi-language sites
-- **wn-pages-plugin** - Static Pages Plugin
-- **wn-debugBar-plugin** - The ever so useful Debug Bar
 
 ## What is in the pipeline?
 While this does attend most of my current project needs, I might add to it some configuration options, allowing you to choos what kind of install you want to run with and so forth. For the time being, I am keep it simple and clutter free.
