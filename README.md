@@ -5,27 +5,59 @@ Simple PHP development environment for quick start projects. Using Nginx, PHP-fp
 ## To use
 
 Clone this repo to where you want the project to be and setup it up
+
 ### Suggested
+
 Since you will probably not be updating this after you´ve installed it (at least not downloading it over and over again for the same project), I would recommend installing it by using `degit`
 
 ```bash
 npx degit https://github.com/GregoryBrownConsultancy/DockerPhp_WinterCMS.git my_project_name
+cd my_project_name
+./setup
 ```
 This ensures your have a clean folder without any link to this repo and you can start fresh.
 
-### Usual git
+### Using git
+
 ```bash
 git clone https://github.com/GregoryBrownConsultancy/DockerPhp_WinterCMS.git my_project_name
 cd my_project_name
 rm -Rf .git
 ./setup
 ```
-
 This will setup a basic PHP & MariaDB system running under your 127.0.0.1
+
+### Checking it works
+
+In the folder you ran `setup` run `docker compose ps`. 
+
+You should have three docker images running:
+- nginx:latest
+- mariadb:latest
+- **project_name**-php (where project_name is the name of your folder usually)
+
+If you have these three running, then you are home free.
+
+### Troubleshooting
+
+#### Installing/Compiling
+
+This project is meant to be run in a *nix environment. So if you are on Windows, you should be running this on WSL.
+(If you are on Windows and trying to run PHP, you should probably be running on WSL anyways).
+
+- Make sure you have the latest docker up and running
+- Make sure your system is up to date
+
+#### Running the project
+
+- A specific service won't start usually means there is port a conflict(in most of the cases) - make sure you don't have local versions of mysql, apache/nginx running on your machine.
+
+
 
 All your source-code should be placed in the folder `app/code`
 
 > You'll need to create the `app/code` folder. That is the root directory of your application in NGINX.
+
 
 ## SCRIPTS I HAVE INCLUDED TO MAKE LIFE EASY
 
